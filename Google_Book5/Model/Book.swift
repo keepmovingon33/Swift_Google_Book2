@@ -68,12 +68,8 @@ class Book: Decodable {
                             authors += auth + ", "
                         }
                     }
-                    
-                    //remove " "
                     authors.removeLast()
-                    //remove ","
                     authors.removeLast()
-                    //send the string back to the view
                     completion(String(authors))
                     return
                     
@@ -82,6 +78,8 @@ class Book: Decodable {
             completion("")
         }
     }
+    
+    
 }
 
 struct VolumeInfo: Decodable {

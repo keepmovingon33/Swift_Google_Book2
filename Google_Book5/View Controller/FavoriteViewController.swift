@@ -9,13 +9,24 @@
 import UIKit
 
 class FavoriteViewController: UIViewController {
+    
 
     @IBOutlet weak var tableView: UITableView!
-    var viewModel: ViewModel!
+//    var viewModel: ViewModel!
+    var viewModel = ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupFav()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getFavorite()
+    }
+    
+    func setupFav() {
+        viewModel.favDelegate = self
     }
     
 
@@ -26,19 +37,25 @@ extension FavoriteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //TODO
         
-        return 4
+        return viewModel.favbooks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavTableCell.identifier, for: indexPath) as! FavTableCell
-        //TODO
-        
-//        let book = viewModel.books[indexPath.row]
-//        viewModel.book = book
+        let favbook = viewModel.favbooks[indexPath.row]
+        cell.book = favbook
         return cell
     }
 }
 
 extension FavoriteViewController: UITableViewDelegate {
 
+}
+
+extension FavoriteViewController: FavoriteDelegate {
+    func update() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }

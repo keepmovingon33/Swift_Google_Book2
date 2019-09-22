@@ -21,7 +21,7 @@ final class CoreManager {
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
-        var container = NSPersistentContainer(name: "CoreBook")
+        var container = NSPersistentContainer(name: "Google_Book5")
         
         container.loadPersistentStores(completionHandler: { (storeDescrip, err) in
             if let error = err {
@@ -39,7 +39,7 @@ final class CoreManager {
         let core = CoreBook(entity: entity, insertInto: context)
         
         //KVC - Key Value Coding - access object property by String
-        core.setValue(book.volumeInfo?.authors, forKey: "author")
+        core.setValue(toStr(from: book.volumeInfo?.authors), forKey: "authors")
         core.setValue(book.volumeInfo?.title, forKey: "title")
         core.setValue(book.volumeInfo?.imageLinks?.smallImage, forKey: "smallImage")
         core.setValue(book.volumeInfo?.imageLinks?.bigImage, forKey: "bigImage")
@@ -107,6 +107,16 @@ final class CoreManager {
         } catch {
             fatalError(error.localizedDescription)
         }
+    }
+    
+    private func toStr(from: [String]?) -> String? {
+        var str: String = ""
+        if let fro = from {
+            for f in fro {
+                str += f + ","
+            }
+        }
+        return str
     }
     
 }
