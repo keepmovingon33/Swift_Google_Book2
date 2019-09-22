@@ -14,5 +14,16 @@ class FavTableCell: UITableViewCell {
     @IBOutlet weak var favBookAuthor: UILabel!
     @IBOutlet weak var favBookTitle: UILabel!
     
+    static let identifier = "FavTableCell"
+    
+    var book: Book! {
+        didSet {
+            favBookTitle.text = book.volumeInfo.title
+            favBookAuthor.text = book.volumeInfo.authors[0]
+            book.getSmallImage { [weak self] img in
+                self?.favBookImage.image = img
+            }
+        }
+    }
     
 }
