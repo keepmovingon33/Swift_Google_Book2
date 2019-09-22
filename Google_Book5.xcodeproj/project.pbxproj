@@ -20,6 +20,8 @@
 		33C3876723373F12002CB38F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3876623373F12002CB38F /* ViewModel.swift */; };
 		33C3876923373F1D002CB38F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3876823373F1D002CB38F /* Book.swift */; };
 		33C3876B2337489E002CB38F /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3876A2337489E002CB38F /* Notification+Name.swift */; };
+		33C3876D23375151002CB38F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3876C23375151002CB38F /* DetailViewController.swift */; };
+		33C3876F23375404002CB38F /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3876E23375404002CB38F /* ViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		33C3876623373F12002CB38F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		33C3876823373F1D002CB38F /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		33C3876A2337489E002CB38F /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		33C3876C23375151002CB38F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		33C3876E23375404002CB38F /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				33C3876A2337489E002CB38F /* Notification+Name.swift */,
+				33C3876E23375404002CB38F /* ViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				33C3873823373DD7002CB38F /* ViewController.swift */,
+				33C3876C23375151002CB38F /* DetailViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 				33C3876123373ED5002CB38F /* BookAPI.swift in Sources */,
 				33C3873923373DD7002CB38F /* ViewController.swift in Sources */,
 				33C3873723373DD7002CB38F /* AppDelegate.swift in Sources */,
+				33C3876D23375151002CB38F /* DetailViewController.swift in Sources */,
+				33C3876F23375404002CB38F /* ViewController+Extension.swift in Sources */,
 				33C3876723373F12002CB38F /* ViewModel.swift in Sources */,
 				33C3876B2337489E002CB38F /* Notification+Name.swift in Sources */,
 			);

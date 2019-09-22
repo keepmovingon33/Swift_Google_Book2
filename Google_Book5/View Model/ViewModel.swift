@@ -8,13 +8,23 @@
 
 import Foundation
 
+protocol BookDelegate: class {
+    func update()
+}
+
 class ViewModel {
+    weak var bookDelegate: BookDelegate!
+   
+    
     var books = [Book]() {
         didSet {
-            let userInfo: [String:ViewModel] = ["ViewModel":self]
-            NotificationCenter.default.post(name: Notification.Name.BookNotification, object: nil, userInfo: userInfo)
+//            let userInfo: [String:ViewModel] = ["ViewModel":self]
+//            NotificationCenter.default.post(name: Notification.Name.BookNotification, object: nil, userInfo: userInfo)
+            bookDelegate?.update()
         }
     }
+    init() {}
+    var book: Book!
     
     func get(search: String) {
         

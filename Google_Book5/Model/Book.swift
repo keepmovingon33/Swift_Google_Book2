@@ -17,7 +17,6 @@ struct BookResponse: Decodable {
 
 class Book: Decodable {
     let volumeInfo: VolumeInfo
-    
     func getSmallImage(completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: volumeInfo.imageLinks.smallImage) else {
             completion(nil)
@@ -53,6 +52,7 @@ class VolumeInfo: Decodable {
     let imageLinks: ImageLinks
     let title: String
     let authors: [String]
+    let description: String
 }
 
 class ImageLinks: Decodable {

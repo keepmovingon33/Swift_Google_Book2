@@ -35,10 +35,12 @@ class ViewController: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        NotificationCenter.default.addObserver(forName: Notification.Name.BookNotification, object: nil, queue: .main) { note in
-            guard let userInfo = note.userInfo as? [String:ViewModel] else {return}
-            self.viewModel = userInfo["ViewModel"]!
-        }
+        viewModel.bookDelegate = self
+        
+//        NotificationCenter.default.addObserver(forName: Notification.Name.BookNotification, object: nil, queue: .main) { note in
+//            guard let userInfo = note.userInfo as? [String:ViewModel] else {return}
+//            self.viewModel = userInfo["ViewModel"]!
+  //      }
     }
 
 
@@ -59,6 +61,12 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let book = viewModel.books[indexPath.row]
+        viewModel.book = book
+        goToDetail(with: viewModel)
+    }
     
 }
 
@@ -73,4 +81,12 @@ extension ViewController: UISearchBarDelegate {
         
     }
     
+}
+
+extension ViewController: BookDelegate {
+    func update() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
