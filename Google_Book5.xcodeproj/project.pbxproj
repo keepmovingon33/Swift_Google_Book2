@@ -22,6 +22,8 @@
 		33C3876B2337489E002CB38F /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3876A2337489E002CB38F /* Notification+Name.swift */; };
 		33C3876D23375151002CB38F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3876C23375151002CB38F /* DetailViewController.swift */; };
 		33C3876F23375404002CB38F /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3876E23375404002CB38F /* ViewController+Extension.swift */; };
+		33C3877323375F62002CB38F /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3877223375F62002CB38F /* FavoriteViewController.swift */; };
+		33C3877523376084002CB38F /* FavTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3877423376084002CB38F /* FavTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		33C3876A2337489E002CB38F /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		33C3876C23375151002CB38F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		33C3876E23375404002CB38F /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		33C3877223375F62002CB38F /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		33C3877423376084002CB38F /* FavTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +108,6 @@
 				33C3875923373E23002CB38F /* Extension */,
 				33C3873623373DD7002CB38F /* AppDelegate.swift */,
 				33C3874523373DD8002CB38F /* Info.plist */,
-				33C3873D23373DD7002CB38F /* Google_Book5.xcdatamodeld */,
 			);
 			path = Google_Book5;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			children = (
 				33C3873823373DD7002CB38F /* ViewController.swift */,
 				33C3876C23375151002CB38F /* DetailViewController.swift */,
+				33C3877223375F62002CB38F /* FavoriteViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				33C3876423373F02002CB38F /* BookTableCell.swift */,
+				33C3877423376084002CB38F /* FavTableCell.swift */,
 				33C3874023373DD8002CB38F /* Assets.xcassets */,
 			);
 			path = View;
@@ -175,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				33C3876823373F1D002CB38F /* Book.swift */,
+				33C3873D23373DD7002CB38F /* Google_Book5.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,6 +296,8 @@
 				33C3876D23375151002CB38F /* DetailViewController.swift in Sources */,
 				33C3876F23375404002CB38F /* ViewController+Extension.swift in Sources */,
 				33C3876723373F12002CB38F /* ViewModel.swift in Sources */,
+				33C3877523376084002CB38F /* FavTableCell.swift in Sources */,
+				33C3877323375F62002CB38F /* FavoriteViewController.swift in Sources */,
 				33C3876B2337489E002CB38F /* Notification+Name.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

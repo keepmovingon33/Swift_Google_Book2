@@ -12,9 +12,13 @@ protocol BookDelegate: class {
     func update()
 }
 
+protocol FavoriteDelegate: class {
+    func update()
+}
+
 class ViewModel {
     weak var bookDelegate: BookDelegate!
-   
+    weak var favDelegate: FavoriteDelegate!
     
     var books = [Book]() {
         didSet {
@@ -23,7 +27,14 @@ class ViewModel {
             bookDelegate?.update()
         }
     }
-    init() {}
+    
+    var favbooks = [Book]() {
+        didSet {
+            favDelegate?.update()
+        }
+    }
+    
+
     var book: Book!
     
     func get(search: String) {
@@ -32,5 +43,13 @@ class ViewModel {
             self?.books = bookss
             print("Books count: \(bookss.count)")
         }
+    }
+    
+    func like() {
+        
+    }
+    
+    func unlike() {
+        
     }
 }
