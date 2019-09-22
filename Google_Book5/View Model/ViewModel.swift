@@ -45,11 +45,23 @@ class ViewModel {
         }
     }
     
-    func like() {
-        
+    func like(book: Book) {
+        CoreManager.shared.save(book)
     }
     
-    func unlike() {
-        
+    func unlike(book: Book) {
+        CoreManager.shared.delete(book)
+    }
+    
+//    func getFavorite() {
+//        CoreManager.shared.load() { [weak self] books in
+//            self?.favbooks = books
+//            print("Favorite books Count: \(books.count)")
+//
+//        }
+//    }
+    
+    func getFavorite() {
+            favbooks = CoreManager.shared.load()
     }
 }

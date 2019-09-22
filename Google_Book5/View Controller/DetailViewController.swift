@@ -24,9 +24,11 @@ class DetailViewController: UIViewController {
     }
     
     func setupDetail() {
-        bookTitle.text = viewModel.book.volumeInfo.title
-        bookDescription.text = viewModel.book.volumeInfo.description
-        bookAuthor.text = viewModel.book.volumeInfo.authors[0]
+        bookTitle.text = viewModel.book.volumeInfo?.title
+        bookDescription.text = viewModel.book.volumeInfo?.description
+        viewModel.book.getAuthors{ [weak self] aut in
+            self?.bookAuthor.text = aut
+        }
         viewModel.book.getBigImage { [weak self] img in
             self?.bookImage.image = img
         }
@@ -34,15 +36,16 @@ class DetailViewController: UIViewController {
     
 
     @IBAction func likeButtonTapped(_ sender: UIButton) {
-        var text = likeButton.titleLabel!.text!
+        let text = likeButton.titleLabel!.text!
         if text.elementsEqual("Like") {
             likeButton.setTitle("Unlike", for: .normal)
             likeButton.setTitleColor(.red, for: .normal)
           //  viewModel.favorite(book: viewModel.book)
+            viewModel.like(book: viewModel.book)
         } else {
             likeButton.setTitle("Like", for: .normal)
             likeButton.setTitleColor(.blue, for: .normal)
-            //viewModel.unfav(book: viewModel.book)
+            viewModel.unlike(book: viewModel.book)
         }
     }
     

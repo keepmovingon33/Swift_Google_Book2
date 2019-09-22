@@ -16,9 +16,20 @@ struct BookResponse: Decodable {
 }
 
 class Book: Decodable {
-    let volumeInfo: VolumeInfo
+    let volumeInfo: VolumeInfo?
+    let id: String
+    
+    init(from core: CoreBook) {
+        self.id = core.id!
+        self.volumeInfo = VolumeInfo(title: core.title,
+                                    authors: core.authors,
+                                    description: core.des,
+                                    smallImage: core.smallImage,
+                                    bigImage: core.bigImage)
+    }
+    
     func getSmallImage(completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: volumeInfo.imageLinks.smallImage) else {
+        guard let url = URL(string: (volumeInfo?.imageLinks?.smallImage)!) else {
             completion(nil)
             return
         }
@@ -33,7 +44,7 @@ class Book: Decodable {
     }
     
     func getBigImage(completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: volumeInfo.imageLinks.bigImage) else {
+        guard let url = URL(string: (volumeInfo?.imageLinks?.bigImage)!) else {
             completion(nil)
             return
         }
@@ -46,20 +57,57 @@ class Book: Decodable {
             }
         }.resume()
     }
+    
+    func getAuthors(completion: @escaping (String) -> Void) {
+        DispatchQueue.main.async {
+            var authors = "By: "
+            if let volumeInfo = self.volumeInfo {
+                if let auths = volumeInfo.authors {
+                    for auth in auths {
+                        if auth != "" {
+                            authors += auth + ", "
+                        }
+                    }
+                    
+                    //remove " "
+                    authors.removeLast()
+                    //remove ","
+                    authors.removeLast()
+                    //send the string back to the view
+                    completion(String(authors))
+                    return
+                    
+                }
+            }
+            completion("")
+        }
+    }
 }
 
-class VolumeInfo: Decodable {
-    let imageLinks: ImageLinks
-    let title: String
-    let authors: [String]
-    let description: String
+struct VolumeInfo: Decodable {
+    var imageLinks: ImageLinks?
+    var title: String?
+    var authors: [String]?
+    let description: String?
+    
+    init(title: String? = nil, authors: String? = nil, description: String? = nil, smallImage: String? = nil, bigImage: String? = nil){
+        self.imageLinks = ImageLinks(smallImage: smallImage, bigImage: bigImage)
+        self.title = title
+        self.authors = authors?.components(separatedBy: ",")
+        self.description = description
+    }
 }
 
-class ImageLinks: Decodable {
-    let smallImage: String
-    let bigImage: String
+struct ImageLinks: Decodable {
+    var smallImage: String?
+    let bigImage: String?
     private enum CodingKeys: String, CodingKey {
         case smallImage = "smallThumbnail"
         case bigImage = "thumbnail"
+    }
+    
+    init(smallImage: String? = nil, bigImage: String? = nil) {
+        self.smallImage = smallImage
+        self.bigImage = bigImage
     }
 }

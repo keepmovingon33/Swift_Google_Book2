@@ -18,8 +18,10 @@ class FavTableCell: UITableViewCell {
     
     var book: Book! {
         didSet {
-            favBookTitle.text = book.volumeInfo.title
-            favBookAuthor.text = book.volumeInfo.authors[0]
+            favBookTitle.text = book.volumeInfo?.title
+            book.getAuthors{ [weak self] aut in
+                self?.favBookAuthor.text = aut
+            }
             book.getSmallImage { [weak self] img in
                 self?.favBookImage.image = img
             }

@@ -18,8 +18,10 @@ class BookTableCell: UITableViewCell {
     
     var book: Book! {
         didSet {
-            bookTitle.text = book.volumeInfo.title
-            bookAuthor.text = book.volumeInfo.authors[0]
+            bookTitle.text = book.volumeInfo?.title ?? ""
+            book.getAuthors{ [weak self] aut in
+                self?.bookAuthor.text = aut
+            }
             book.getSmallImage { [weak self] img in
                 self?.bookImage.image = img
             }
