@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         definesPresentationContext = true
         
         viewModel.bookDelegate = self
+        
         tableView.tableFooterView = UIView(frame: .zero)
         
 //        NotificationCenter.default.addObserver(forName: Notification.Name.BookNotification, object: nil, queue: .main) { note in
@@ -75,7 +76,6 @@ extension ViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
-        
         viewModel.get(search: searchText)
         
         navigationItem.searchController?.isActive = false
@@ -91,3 +91,4 @@ extension ViewController: BookDelegate {
         }
     }
 }
+

@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
     }
     
     func setupDetail() {
+        favoriteButtonText()
         bookTitle.text = viewModel.book.volumeInfo?.title
         bookDescription.text = viewModel.book.volumeInfo?.description
         viewModel.book.getAuthors{ [weak self] aut in
@@ -32,20 +33,28 @@ class DetailViewController: UIViewController {
         viewModel.book.getBigImage { [weak self] img in
             self?.bookImage.image = img
         }
+
     }
     
+    func favoriteButtonText() {
+        let book = viewModel.book
+        if (viewModel.isFav(book: book!)){
+            likeButton.setTitle("Unlike", for: .normal)
+            likeButton.setTitleColor(.red, for: .normal)
+        }else{
+            likeButton.setTitle("Like", for: .normal)
+            likeButton.setTitleColor(.blue, for: .normal)
+        }
+    }
 
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         let text = likeButton.titleLabel!.text!
         if text.elementsEqual("Like") {
-            likeButton.setTitle("Unlike", for: .normal)
-            likeButton.setTitleColor(.red, for: .normal)
-          //  viewModel.favorite(book: viewModel.book)
             viewModel.like(book: viewModel.book)
+            favoriteButtonText()
         } else {
-            likeButton.setTitle("Like", for: .normal)
-            likeButton.setTitleColor(.blue, for: .normal)
             viewModel.unlike(book: viewModel.book)
+            favoriteButtonText()
         }
     }
     

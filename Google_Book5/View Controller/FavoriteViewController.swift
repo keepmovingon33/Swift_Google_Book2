@@ -14,6 +14,7 @@ class FavoriteViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 //    var viewModel: ViewModel!
     var viewModel = ViewModel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

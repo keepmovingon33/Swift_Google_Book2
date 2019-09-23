@@ -45,9 +45,18 @@ class ViewModel {
         }
     }
     
+    func isFav(book: Book) -> Bool {
+        let id = book.id
+        for book in CoreManager.shared.load() {
+            if (book.id == id) {
+                return true
+            }
+        }
+        return false
+    }
+    
     func like(book: Book) {
         CoreManager.shared.save(book)
-        
     }
     
     func unlike(book: Book) {
