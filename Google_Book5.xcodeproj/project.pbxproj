@@ -25,6 +25,7 @@
 		33C3877323375F62002CB38F /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3877223375F62002CB38F /* FavoriteViewController.swift */; };
 		33C3877523376084002CB38F /* FavTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C3877423376084002CB38F /* FavTableCell.swift */; };
 		33C387772337642A002CB38F /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C387762337642A002CB38F /* CoreManager.swift */; };
+		33C387B42338494D002CB38F /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C387B32338494D002CB38F /* CacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		33C3877223375F62002CB38F /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		33C3877423376084002CB38F /* FavTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavTableCell.swift; sourceTree = "<group>"; };
 		33C387762337642A002CB38F /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
+		33C387B32338494D002CB38F /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				33C3876023373ED5002CB38F /* BookAPI.swift */,
 				33C3876223373EE0002CB38F /* BookService.swift */,
 				33C387762337642A002CB38F /* CoreManager.swift */,
+				33C387B32338494D002CB38F /* CacheManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33C387772337642A002CB38F /* CoreManager.swift in Sources */,
+				33C387B42338494D002CB38F /* CacheManager.swift in Sources */,
 				33C3876923373F1D002CB38F /* Book.swift in Sources */,
 				33C3873F23373DD7002CB38F /* Google_Book5.xcdatamodeld in Sources */,
 				33C3876523373F02002CB38F /* BookTableCell.swift in Sources */,

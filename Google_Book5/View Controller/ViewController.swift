@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         definesPresentationContext = true
         
         viewModel.bookDelegate = self
+        tableView.tableFooterView = UIView(frame: .zero)
         
 //        NotificationCenter.default.addObserver(forName: Notification.Name.BookNotification, object: nil, queue: .main) { note in
 //            guard let userInfo = note.userInfo as? [String:ViewModel] else {return}

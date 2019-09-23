@@ -47,6 +47,7 @@ class ViewModel {
     
     func like(book: Book) {
         CoreManager.shared.save(book)
+        
     }
     
     func unlike(book: Book) {

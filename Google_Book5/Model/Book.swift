@@ -28,36 +28,36 @@ class Book: Decodable {
                                     bigImage: core.bigImage)
     }
     
-    func getSmallImage(completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: (volumeInfo?.imageLinks?.smallImage)!) else {
-            completion(nil)
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (dat, _, _) in
-            if let data = dat {
-                DispatchQueue.main.async {
-                    completion(UIImage(data: data))
-                }
-            }
-        }.resume()
-    }
-    
-    func getBigImage(completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: (volumeInfo?.imageLinks?.bigImage)!) else {
-            completion(nil)
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (dat, _, _) in
-            if let data = dat {
-                DispatchQueue.main.async {
-                    completion(UIImage(data: data))
-                }
-            }
-        }.resume()
-    }
-    
+//    func getSmallImage(completion: @escaping (UIImage?) -> Void) {
+//        guard let url = URL(string: (volumeInfo?.imageLinks?.smallImage)!) else {
+//            completion(nil)
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: url) { (dat, _, _) in
+//            if let data = dat {
+//                DispatchQueue.main.async {
+//                    completion(UIImage(data: data))
+//                }
+//            }
+//        }.resume()
+//    }
+//
+//    func getBigImage(completion: @escaping (UIImage?) -> Void) {
+//        guard let url = URL(string: (volumeInfo?.imageLinks?.bigImage)!) else {
+//            completion(nil)
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: url) { (dat, _, _) in
+//            if let data = dat {
+//                DispatchQueue.main.async {
+//                    completion(UIImage(data: data))
+//                }
+//            }
+//        }.resume()
+//    }
+//
     func getAuthors(completion: @escaping (String) -> Void) {
         DispatchQueue.main.async {
             var authors = "By: "
@@ -72,14 +72,39 @@ class Book: Decodable {
                     authors.removeLast()
                     completion(String(authors))
                     return
-                    
+
                 }
             }
             completion("")
         }
     }
+    func getSmallImage(completion: @escaping (UIImage?) -> Void){
+        if let img = volumeInfo?.imageLinks?.smallImage {
+            cache.downloadFrom(endpoint: img) { dat in
+                if let data = dat {
+                    DispatchQueue.main.async {
+                        completion(UIImage(data: data))
+                    }
+                }
+            }
+        } else {
+            completion(nil)
+        }
+    }
     
-    
+    func getBigImage(completion: @escaping (UIImage?) -> Void){
+        if let img = volumeInfo?.imageLinks?.bigImage {
+            cache.downloadFrom(endpoint: img) { dat in
+                if let data = dat {
+                    DispatchQueue.main.async {
+                        completion(UIImage(data: data))
+                    }
+                }
+            }
+        } else {
+            completion(nil)
+        }
+    }
 }
 
 struct VolumeInfo: Decodable {

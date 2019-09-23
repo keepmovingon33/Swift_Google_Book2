@@ -26,6 +26,7 @@ class FavoriteViewController: UIViewController {
     }
     
     func setupFav() {
+        tableView.tableFooterView = UIView(frame: .zero)
         viewModel.favDelegate = self
     }
     
@@ -49,7 +50,12 @@ extension FavoriteViewController: UITableViewDataSource {
 }
 
 extension FavoriteViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let book = viewModel.favbooks[indexPath.row]
+        viewModel.book = book
+        goToDetail(with: viewModel)
+    }
 }
 
 extension FavoriteViewController: FavoriteDelegate {
